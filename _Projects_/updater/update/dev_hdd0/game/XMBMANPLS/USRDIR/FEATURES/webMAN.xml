@@ -836,8 +836,8 @@
 		<A>
 			<T key="webman_update">
 				<P key="info"><>net_package_install</></P>
-				<P key="pkg_src"><>http://aldostools.org/ps3/webMAN_MOD_latest.pkg</></P>
-				<P key="pkg_src_qa"><>http://aldostools.org/ps3/webMAN_MOD_latest.pkg</></P>
+				<P key="pkg_src"><>http://ps3.aldostools.org/webMAN_MOD_latest.pkg</></P>
+				<P key="pkg_src_qa"><>http://ps3.aldostools.org/webMAN_MOD_latest.pkg</></P>
 				<P key="content_name"><>msg_install</></P>
 				<P key="content_id"><>EP0001-UPDWEBMOD_00-0000000000000000</></P>
 				<P key="prod_pict_path"><>/dev_hdd0//game/XMBMANPLS/USRDIR/IMAGES/webman.png</></P>

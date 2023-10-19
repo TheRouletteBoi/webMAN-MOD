@@ -8,6 +8,10 @@
 		// /dev_blind?disable  unmounts /dev_blind
 
 		is_binary = FOLDER_LISTING;
-		if(param[10] == '?' && !(param[11] & 2)) goto html_response;
+		if(param[10] == '?') 
+		{
+			if(!param[11]) param[11] = '0' + isDir("/dev_blind");
+			goto html_response;
+		}
 		goto html_listing;
 	}

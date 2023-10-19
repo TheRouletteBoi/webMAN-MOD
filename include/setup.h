@@ -139,6 +139,8 @@ static void setup_parse_settings(char *param)
 	webman_config->ps1emu = IS_MARKED("pse=1");
 	webman_config->ps2emu = IS_MARKED("b2n=1");
 
+	webman_config->ps1rom = IS_MARKED("psr=1"); // 0=ps1_rom.bin, 1=ps1_bios.bin
+
 	webman_config->app_home = IS_UNMARKED("ap=1"); // Mount JB GAMES as /app_home
 #ifdef MOUNT_GAMEI
 	webman_config->gamei = IS_MARKED("gmi=1");
@@ -598,7 +600,8 @@ static void setup_form(char *buffer, char *templn)
 
 #ifdef COBRA_ONLY
 	add_checkbox("ps1", "PLAYSTATION\xC2\xAE&nbsp;"  ,     " ("       , !(webman_config->cmask & PS1), buffer);
-	add_checkbox("pse", "ps1_netemu"                 ,     ")<br>"    ,  (webman_config->ps1emu)     , buffer);
+	add_checkbox("pse", "ps1_netemu"                 ,     ", "       ,  (webman_config->ps1emu)     , buffer);
+	add_checkbox("psr", "ps1_bios.bin"               ,     ")<br>"    ,  (webman_config->ps1rom)     , buffer);
 
 	b = (isDir(PSP_LAUNCHER_MINIS) || isDir(PSP_LAUNCHER_REMASTERS));
 	add_checkbox("psp", "PLAYSTATION\xC2\xAEPORTABLE", b ? " (" : _BR_, !(webman_config->cmask & PSP), buffer);
@@ -1113,7 +1116,7 @@ static void setup_form(char *buffer, char *templn)
 //					"<a href=\"http://psx-place.com/forums/wMM.126/\">" WEBMAN_MOD " - Info @ PSX-Place</a><br>");
 	#else
 	concat(buffer,  HTML_RED_SEPARATOR
-					"<a href=\"http://github.com/aldostools/webMAN-MOD/releases\">" WEBMAN_MOD " - Latest release</a><br>"
+					"<a href=\"http://ps3.aldostools.org/links.html\">" WEBMAN_MOD " - Latest release</a><br>"
 					"<a href=\"http://psx-place.com/forums/wMM.126/\">" WEBMAN_MOD " - Info @ PSX-Place</a><br>");
 	#endif
 #else

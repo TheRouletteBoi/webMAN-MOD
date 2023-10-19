@@ -331,6 +331,8 @@ copy_ps2iso_to_hdd0:
 
 			else if(strstr(_path, "/PSXISO") || strstr(_path, "/PSXGAMES") || (mount_unk == EMU_PSX))
 			{
+				if(strcasestr(_path, "[bios]")) remap_ps1bios(true);
+
 				mount_unk = EMU_PSX;
 				ret = mount_ps_disc_image(_path, cobra_iso_list, 1, EMU_PSX); if(multiCD) check_multipsx = !isDir("/dev_usb000"); // check eject/insert USB000 in mount_on_insert_usb()
 			}

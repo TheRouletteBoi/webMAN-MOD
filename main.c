@@ -394,7 +394,7 @@ static void do_umount(bool clean);
 static void mount_autoboot(void);
 static bool mount_game(const char *_path, u8 do_eject);
 #ifdef COBRA_ONLY
-static void do_umount_iso(void);
+static void do_umount_iso(bool clean);
 static void unload_vsh_gui(void);
 static void set_app_home(const char *game_path);
 static bool is_iso_0(const char *filename);

@@ -135,8 +135,9 @@ typedef struct
 	u8 deliso;    // 0=none, 1=delete cached PS2ISO copied from net/ntfs
 	u8 auto_install_pkg; // 0=auto install PKG when a .ntfs[BDFILE] is mounted, 1=no auto install PKG
 	u8 app_home;  // 0=mount folders in app_home, 1=do not mount app_home
+	u8 ps1rom;    // 0=ps1_rom.bin, 1=ps1_bios.bin
 
-	u8 padding9[6];
+	u8 padding9[5];
 
 	// profile settings
 

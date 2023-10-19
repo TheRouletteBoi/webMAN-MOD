@@ -11,6 +11,7 @@
 // [PS2]     PS2 extracted folders in /PS2DISC (needs PS2_DISC compilation flag)
 // [netemu]  Mount ps2/psx game with netemu
 // [psn]     Map /dev_hdd0/game/[GAME_ID] to /dev_bdvd/PS3_GAME (if the folder does not exist)
+// [bios]    Use external ps1_bios.bin
 
 // hold CROSS = force Auto-Play
 // hold CIRCLE = cancel Auto-Play
@@ -999,7 +1000,7 @@ static void set_bdvd_as_app_home(void)
 	}
 }
 
-static void do_umount_iso(void)
+static void do_umount_iso(bool clean)
 {
 	unsigned int real_disctype, effective_disctype, iso_disctype;
 	cobra_get_disc_type(&real_disctype, &effective_disctype, &iso_disctype);
@@ -1023,7 +1024,7 @@ static void do_umount_iso(void)
 	}
 
 	char filename[MAX_PATH_LEN];
-	if(read_file(DEL_CACHED_ISO, filename, MAX_PATH_LEN, 0))
+	if(clean && read_file(DEL_CACHED_ISO, filename, MAX_PATH_LEN, 0))
 	{
 		cellFsUnlink(DEL_CACHED_ISO);
 		cellFsUnlink(filename);
@@ -1059,7 +1060,7 @@ static void do_umount(bool clean)
 		#ifndef LITE_EDITION
 		swap_file(PSP_EMU_PATH, "psp_emulator.self", "psp_emulator.self.dec_edat", "psp_emulator.self.original"); // restore original psp_emulator.self
 		#endif
-		do_umount_iso();	// unmount iso
+		do_umount_iso(clean);	// unmount iso
 		#ifdef PS2_DISC
 		do_umount_ps2disc(false); // unmount ps2disc
 		#endif
@@ -1152,18 +1153,21 @@ static void get_last_game(char *last_path)
 #ifdef COBRA_ONLY
 static void cache_file_to_hdd(char *source, char *target, const char *basepath, char *msg)
 {
-	do_umount(false); // umount + delete previous cached file
-
 	if(*source == '/')
 	{
 		sprintf(target, "/dev_hdd0%s", basepath);
 		cellFsMkdir(target, DMODE);
 
-		cellFsUnlink(DEL_CACHED_ISO);
-
 		strcat(target, get_filename(source)); // add file name
 
-		if((copy_in_progress || fix_in_progress) == false && not_exists(target))
+		char filename[MAX_PATH_LEN];
+		if(read_file(DEL_CACHED_ISO, filename, MAX_PATH_LEN, 0) && !IS(target, filename))
+		{
+			cellFsUnlink(DEL_CACHED_ISO);
+			cellFsUnlink(filename);
+		}
+
+		if((copy_in_progress | fix_in_progress) == false && not_exists(target))
 		{
 			sprintf(msg, "%s %s\n"
 						 "%s %s", STR_COPYING, source, STR_CPYDEST, basepath);
@@ -1180,14 +1184,20 @@ static void cache_file_to_hdd(char *source, char *target, const char *basepath, 
 				cellFsUnlink(target);
 				show_msg_with_icon(ICON_EXCLAMATION, STR_CPYABORT);
 			}
-			else if(webman_config->deliso)
+		}
+
+		if(file_exists(target))
+		{
+			strcpy(source, target);
+			
+			if(webman_config->deliso)
 			{
 				save_file(DEL_CACHED_ISO, target, SAVE_ALL);
 			}
 		}
-
-		if(file_exists(target)) strcpy(source, target);
 	}
+
+	do_umount(false); // umount + delete previous cached file
 }
 
 static void cache_icon0_and_param_sfo(char *destpath)

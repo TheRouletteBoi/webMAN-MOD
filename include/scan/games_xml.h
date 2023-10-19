@@ -109,6 +109,11 @@ static void map_patched_modules(void)
 	#endif
 }
 
+static void remap_ps1bios(bool external)
+{
+	sys_map_path2(ORG_PS1_ROM_PATH, external && file_exists(NEW_PS1_ROM_PATH) ? NEW_PS1_ROM_PATH : NULL);
+}
+
 static void apply_remaps(void)
 {
 	disable_map_path(false);
@@ -116,6 +121,8 @@ static void apply_remaps(void)
  #ifdef WM_PROXY_SPRX
 	sys_map_path2(VSH_MODULE_DIR WM_PROXY_SPRX ".sprx", file_exists(WM_PROXY) ? WM_PROXY : NULL);
  #endif
+
+	remap_ps1bios(webman_config->ps1rom);
 
 	//if(payload_ps3hen)
 	{

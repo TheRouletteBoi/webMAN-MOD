@@ -641,6 +641,8 @@ int main()
 		file_copy(APP_USRDIR "/res/wm_ignore.txt",     RES_DIR "/wm_ignore.txt");
 	if(not_exists(RES_DIR "/roms_extensions.txt"))
 		file_copy(APP_USRDIR "/res/roms_extensions.txt", RES_DIR "/roms_extensions.txt");
+	if(not_exists(RES_DIR "/ps1_bios.bin"))
+		file_copy(APP_USRDIR "/res/ps1_bios.bin", RES_DIR "/ps1_bios.bin");
 
 	//file_copy(APP_USRDIR "/res/npsignin_plugin.rco",   RES_DIR "/npsignin_plugin.rco");
 

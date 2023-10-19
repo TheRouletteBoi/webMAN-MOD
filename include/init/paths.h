@@ -27,6 +27,9 @@
 #define NPSIGNIN_PLUGIN_OFF		"/./dev_hdd0/tmp/wm_res/npsignin_plugin.rco"
 #define NPSIGNIN_PLUGIN_ON		"/./dev_flash/vsh/resource/npsignin_plugin.rco"
 
+#define ORG_PS1_ROM_PATH	"/dev_flash/ps1emu/ps1_rom.bin"
+#define NEW_PS1_ROM_PATH	"/dev_hdd0/tmp/wm_res/ps1_bios.bin"
+
 #define XMB_DISC_ICON		"/dev_hdd0/tmp/game/ICON0.PNG"
 #define CATEGORY_GAME_XML	"/dev_flash/vsh/resource/explore/xmb/category_game.xml"
 

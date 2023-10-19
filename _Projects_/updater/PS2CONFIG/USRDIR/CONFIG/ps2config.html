@@ -5255,7 +5255,7 @@ function kd(e)
 	var kc=e.keyCode;
 	if(kc==27) { // Esc
 		input.value='';
-		setTimeout(doSearch, 0);
+		setTimeout(doSearch(input.value), 0);
 	}
 	if(kc==113) { // F2
 		category = (category == 'ENC') ? 'ALL' : 'ENC';

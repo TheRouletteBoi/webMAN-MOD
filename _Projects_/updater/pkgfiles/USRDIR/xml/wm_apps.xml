@@ -10,7 +10,7 @@
 			</T>
 			<T key="app002" include="inc">
 				<P key="title"><>PS2 CONFIG Database</></P>
-				<P key="info"><>99.4 MB</></P>
+				<P key="info"><>100 MB</></P>
 			</T>
 			<T key="app003" include="inc">
 				<P key="title"><>PS2 Classics Launcher</></P>
@@ -26,15 +26,15 @@
 			</T>
 			<T key="app006" include="inc">
 				<P key="title"><>PS3 Covers Pack</></P>
-				<P key="info"><>393 MB</></P>
+				<P key="info"><>394 MB</></P>
 			</T>
 			<T key="app007" include="inc">
 				<P key="title"><>PSX & PS2 Covers Pack</></P>
-				<P key="info"><>389 MB</></P>
+				<P key="info"><>625 MB</></P>
 			</T>
 			<T key="app008" include="inc">
 				<P key="title"><>RetroArch Community Edition</></P>
-				<P key="info"><>620 MB</></P>
+				<P key="info"><>601 MB</></P>
 			</T>
 			<T key="app009" include="inc">
 				<P key="title"><>multiMAN</></P>
@@ -62,7 +62,7 @@
 			</T>
 			<T key="app015" include="inc">
 				<P key="title"><>Ultimate Toolbox v2.03 FULL 4.89-4.90</></P>
-				<P key="info"><>13.3 MB</></P>
+				<P key="info"><>484 MB</></P>
 			</T>
 			<T key="app016" include="inc">
 				<P key="title"><>webMAN MOD Installer</></P>
@@ -264,8 +264,8 @@
 		<A>
 			<T key="app011_link">
 				<P key="info"><>net_package_install</></P>
-				<P key="pkg_src"><>http://multiman.deanbg.com/multiman/feed/app/movian-5.0.736-deank-playstation3.pkg</></P>
-				<P key="pkg_src_qa"><>http://multiman.deanbg.com/multiman/feed/app/movian-5.0.736-deank-playstation3.pkg</></P>
+				<P key="pkg_src"><>http://multiman.deanbg.com/multiman/feed/app/movian-5.0.745-deank-playstation3.pkg</></P>
+				<P key="pkg_src_qa"><>http://multiman.deanbg.com/multiman/feed/app/movian-5.0.745-deank-playstation3.pkg</></P>
 				<P key="content_name"><>msg_install</></P>
 				<P key="content_id"><>UP0001-HTSS00003_00-0000000000000000</></P>
 				<P key="prod_pict_path"><>/dev_hdd0//game/XMBMANPLS/USRDIR/IMAGES/package.png</></P>
